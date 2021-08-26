@@ -3,6 +3,7 @@ import { initializeStore } from "../lib/store.ts";
 import { initializeApollo } from "../lib/apollo";
 import Layout from "../components/Layout";
 import Counter from "../features/counter/Counter";
+import SpotifyLogin from "../features/authentication/SpotifyLogin";
 import Submit from "../components/Submit";
 import PostList, {
   ALL_POSTS_QUERY,
@@ -17,6 +18,10 @@ const IndexPage = () => {
     <Layout>
       {/* Redux */}
       <Counter />
+      <hr />
+
+      <SpotifyLogin />
+
       <hr />
       {/* Apollo */}
       <Submit />

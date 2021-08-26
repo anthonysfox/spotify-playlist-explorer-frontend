@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../lib/hooks";
-import { counterSlice } from "./counterSlice";
+import { increment, decrement, reset, incrementByAmount, selectCount } from "./counterSlice";
 const Counter = () => {
-  const count = useAppSelector(state => state.counter.count)
+  const count = useAppSelector(selectCount)
   const [incAmount, setIncAmount] = useState(0)
   const dispatch = useAppDispatch()
 
@@ -12,10 +12,10 @@ const Counter = () => {
         Count: <span>{count}</span>
       </h1>
       <input type="number" name="incAmount" id="incAmount" onChange={(e) => setIncAmount(Number(e.target.value))}/>
-      <button onClick={() => dispatch(counterSlice.actions.increment())}>+1</button>
-      <button onClick={() => dispatch(counterSlice.actions.decrement())}>-1</button>
-      <button onClick={() => dispatch(counterSlice.actions.reset())}>Reset</button>
-      <button onClick={() => dispatch(counterSlice.actions.incrementByAmount(incAmount))}>Add specific amount</button>
+      <button onClick={() => dispatch(increment())}>+1</button>
+      <button onClick={() => dispatch(decrement())}>-1</button>
+      <button onClick={() => dispatch(reset())}>Reset</button>
+      <button onClick={() => dispatch(incrementByAmount(incAmount))}>Add specific amount</button>
     </div>
   );
 };
